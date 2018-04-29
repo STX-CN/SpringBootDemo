@@ -1,5 +1,6 @@
 server:
   port: 9092
-age: 18
-nation: CN
-content: "age: ${age}, nation: ${nation}"
+
+people:
+  age: 18
+  nation: CN
