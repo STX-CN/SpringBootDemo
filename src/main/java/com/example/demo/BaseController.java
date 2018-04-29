@@ -16,6 +16,4 @@ public class BaseController {
 		return "id:" + id;
 	}
 	
-	
-	
 }
