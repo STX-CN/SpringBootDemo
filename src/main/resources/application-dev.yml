@@ -1,0 +1,6 @@
+server:
+  port: 9092
+
+people:
+  age: 18
+  nation: CN
