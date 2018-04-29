@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BaseController {
 	
 	@RequestMapping(value= "/hello", method = RequestMethod.GET)
-	public @ResponseBody String say(@RequestParam("id")int id)
+	public @ResponseBody String say(@RequestParam(value="id", required=false, defaultValue="100")int id)
 	{
 		return "id:" + id;
 	}
