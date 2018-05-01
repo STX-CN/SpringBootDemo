@@ -31,6 +31,7 @@ public class PeopleController {
 	 */
 	@GetMapping(value="/peoples")
 	public List<People> peopleList(){
+		System.out.println("peopleList");
 		return peopleRepository.findAll();
 	}
 	
