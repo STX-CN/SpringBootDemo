@@ -27,7 +27,6 @@ public class PeopleControllerTest {
 	{
 		   mvc.perform(MockMvcRequestBuilders.get("/peoples"))
            .andExpect(MockMvcResultMatchers.status().isOk());
-		   
 //对返回数据内容进行判断		   
 //	        .andExpect(MockMvcResultMatchers.content().string("abc"));
 	}
