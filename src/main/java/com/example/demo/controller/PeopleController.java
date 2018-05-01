@@ -1,7 +1,6 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,13 +9,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.domain.People;
+import com.example.demo.repository.PeopleRepository;
+import com.example.demo.service.PeopleService;
+
 @RestController
 public class PeopleController {
 	
 	@Autowired
-	private PeopleRepository peopleRepository;
-	@Autowired
 	private PeopleService peopleService;
+	@Autowired
+	private PeopleRepository peopleRepository;
 	
 	/*
 	 * 查询群众列表
@@ -45,8 +48,7 @@ public class PeopleController {
 	@GetMapping(value="/peoples/{id}")
 	public People peopleFindOne(@RequestParam("id") Integer id)
 	{
-		Optional<People> o = peopleRepository.findById(id);
-		return o.get();
+		return peopleRepository.findOne(id);
 	}
 	
 	//更新一个人
@@ -66,7 +68,7 @@ public class PeopleController {
 	@DeleteMapping(value="/peoples/{id}")
 	public void deletePeople(@RequestParam("id") Integer id)
 	{
-		peopleRepository.deleteById(id);
+		peopleRepository.delete(id);
 	}
 	
 	//通过年龄查询人群列表

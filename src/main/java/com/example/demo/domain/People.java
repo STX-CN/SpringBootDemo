@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EntityScan
+@Entity
 public class People {
 	
 	@Id
@@ -35,7 +35,7 @@ public class People {
 	{
 		this.name = name;
 	}
-	public int getAge()
+	public Integer getAge()
 	{
 		return age;
 	}

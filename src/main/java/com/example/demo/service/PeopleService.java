@@ -1,8 +1,11 @@
-package com.example.demo;
+package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.demo.domain.People;
+import com.example.demo.repository.PeopleRepository;
 
 @Service
 public class PeopleService {
@@ -10,6 +13,7 @@ public class PeopleService {
 	@Autowired
 	private PeopleRepository peopleRepositoy;
 	
+	//支持事物处理
 	@Transactional
 	public void insertTwo()
 	{
