@@ -48,7 +48,8 @@ public class PeopleController {
 	public Result<People> peopleAdd(@Valid People people, BindingResult bindingResult)
 	{
 		if(bindingResult.hasErrors()) {
-			return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
+			return null;
+			//	return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
 		}		
 		People newPeople = new People();
 		newPeople.setName(people.getName());
