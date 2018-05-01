@@ -43,16 +43,16 @@ public class PeopleController {
 	 * 
 	 */
 	@PostMapping(value="/peoples")
-	public People peopleAdd(@Valid People people, BindingResult bindingResult)
+	public Object peopleAdd(@Valid People people, BindingResult bindingResult)
 	{
 		if(bindingResult.hasErrors()) {
-			System.out.println(bindingResult.getFieldError().getDefaultMessage());
-			return null;
+			return bindingResult.getFieldError().getDefaultMessage();
 		}
 		
 		People newPeople = new People();
 		newPeople.setName(people.getName());
 		newPeople.setAge(people.getAge());
+		newPeople.setMoney(people.getMoney());
 		return peopleRepository.save(newPeople);
 	}
 	
