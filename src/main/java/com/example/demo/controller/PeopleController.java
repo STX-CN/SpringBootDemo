@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,13 +38,12 @@ public class PeopleController {
 	 * 
 	 */
 	@PostMapping(value="/peoples")
-	public People peopleAdd(@RequestParam("name") String name,
-			@RequestParam("age") Integer age)
+	public People peopleAdd(People people)
 	{
-		People people = new People();
-		people.setName(name);
-		people.setAge(age);
-		return peopleRepository.save(people);
+		People newPeople = new People();
+		newPeople.setName(people.getName());
+		newPeople.setAge(people.getAge());
+		return peopleRepository.save(newPeople);
 	}
 	
 	//查询一个人
