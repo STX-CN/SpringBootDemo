@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +47,7 @@ public class PeopleController {
 	
 	//查询一个人
 	@GetMapping(value="/peoples/{id}")
-	public People peopleFindOne(@RequestParam("id") Integer id)
+	public People peopleFindOne(@PathVariable("id") Integer id)
 	{
 		return peopleRepository.findOne(id);
 	}
@@ -60,20 +61,20 @@ public class PeopleController {
 		People people = new People();
 		people.setAge(age);
 		people.setName(name);
-		people.setId(id);;
+		people.setId(id);
 		return peopleRepository.save(people);
 	}
 	
 	//删除一个人
 	@DeleteMapping(value="/peoples/{id}")
-	public void deletePeople(@RequestParam("id") Integer id)
+	public void deletePeople(@PathVariable("id") Integer id)
 	{
 		peopleRepository.delete(id);
 	}
 	
 	//通过年龄查询人群列表
 	@GetMapping(value="/peoples/age/{age}")
-	public List<People> peopleListByAge(@RequestParam("age") Integer age)
+	public List<People> peopleListByAge(@PathVariable("age") Integer age)
 	{
 		return peopleRepository.findByAge(age);
 	}
