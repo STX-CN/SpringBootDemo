@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,7 @@ import com.example.demo.service.PeopleService;
 @RestController
 public class PeopleController {
 	
+	private final static Logger logger = LoggerFactory.getLogger(PeopleController.class);
 	@Autowired
 	private PeopleService peopleService;
 	@Autowired
@@ -31,7 +34,7 @@ public class PeopleController {
 	 */
 	@GetMapping(value="/peoples")
 	public List<People> peopleList(){
-		System.out.println("peopleList");
+		logger.info("peopleList");
 		return peopleRepository.findAll();
 	}
 	
