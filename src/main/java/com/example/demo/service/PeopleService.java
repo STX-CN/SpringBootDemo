@@ -29,4 +29,21 @@ public class PeopleService {
 		peopleRepositoy.save(peopleB);
 	}
 	
+	public void getAge(Integer id) throws Exception
+	{
+		People people = peopleRepositoy.findOne(id);
+		Integer age = people.getAge();
+		if(age < 10)
+		{
+			throw new Exception("小学生");
+		}else if(age > 10 && age < 16)
+		{
+			throw new Exception("初中生");
+		}else if(age > 16 && age < 24)
+		{
+			throw new Exception("大学生");
+		}else {
+			throw new Exception("社会人员");
+		}
+	}
 }

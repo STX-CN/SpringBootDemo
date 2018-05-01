@@ -97,6 +97,13 @@ public class PeopleController {
 	{
 		peopleService.insertTwo();
 	}
+	
+	@GetMapping(value="/peoples/getAge/{id}")
+	public void  getAge(@PathVariable("id") Integer id) throws Exception
+	{
+		peopleService.getAge(id);
+	}
+	
 }
 
 
