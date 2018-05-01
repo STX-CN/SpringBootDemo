@@ -48,12 +48,8 @@ public class PeopleController {
 	public Result<People> peopleAdd(@Valid People people, BindingResult bindingResult)
 	{
 		if(bindingResult.hasErrors()) {
-//			return bindingResult.getFieldError().getDefaultMessage();
-			String msg = bindingResult.getFieldError().getDefaultMessage();
-			Result res = ResultUtil.error(1, msg);
-			return res;
-		}
-		
+			return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
+		}		
 		People newPeople = new People();
 		newPeople.setName(people.getName());
 		newPeople.setAge(people.getAge());
