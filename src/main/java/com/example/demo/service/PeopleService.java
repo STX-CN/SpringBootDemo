@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.People;
+import com.example.demo.enums.ResultEnum;
 import com.example.demo.exception.PeopleException;
 import com.example.demo.repository.PeopleRepository;
 
@@ -36,15 +37,15 @@ public class PeopleService {
 		Integer age = people.getAge();
 		if(age < 10)
 		{
-			throw new PeopleException(100, "小学生");
+			throw new PeopleException(ResultEnum.PRIMARY_SCHOOL);
 		}else if(age > 10 && age < 16)
 		{
-			throw new PeopleException(101, "初中生");
+			throw new PeopleException(ResultEnum.MIDDLE_SCHOOL);
 		}else if(age > 16 && age < 24)
 		{
-			throw new PeopleException(102, "大学生");
+			throw new PeopleException(ResultEnum.COLLEGE_SCHOOL);
 		}else {
-			throw new PeopleException(103, "社会人员");
+			throw new PeopleException(ResultEnum.SOCIAL_SCHOOL);
 		}
 	}
 }

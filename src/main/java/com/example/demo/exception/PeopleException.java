@@ -1,5 +1,7 @@
 package com.example.demo.exception;
 
+import com.example.demo.enums.ResultEnum;
+
 public class PeopleException extends RuntimeException{
 	
 	private Integer code;
@@ -9,6 +11,13 @@ public class PeopleException extends RuntimeException{
 		super(message);
 		this.code = code;
 	}
+	
+	public PeopleException(ResultEnum resultEnum)
+	{
+		super(resultEnum.getMsg());
+		this.code = resultEnum.getCode();
+	}
+	
 	
 	public void setCode(int code)
 	{
