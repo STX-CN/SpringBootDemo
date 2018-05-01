@@ -48,4 +48,17 @@ public class PeopleService {
 			throw new PeopleException(ResultEnum.SOCIAL_SCHOOL);
 		}
 	}
+	
+	/**
+	 * 通过Id查询一个人的返回信息
+	 * @param id
+	 * @return
+	 */
+	public People findOne(Integer id)
+	{
+		return peopleRepositoy.findOne(id);
+	}
+	
 }
+
+
