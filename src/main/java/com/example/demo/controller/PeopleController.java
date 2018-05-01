@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.People;
+import com.example.demo.domain.Result;
 import com.example.demo.repository.PeopleRepository;
 import com.example.demo.service.PeopleService;
+import com.example.demo.utils.ResultUtil;
 
 @RestController
 public class PeopleController {
@@ -43,17 +45,20 @@ public class PeopleController {
 	 * 
 	 */
 	@PostMapping(value="/peoples")
-	public Object peopleAdd(@Valid People people, BindingResult bindingResult)
+	public Result<People> peopleAdd(@Valid People people, BindingResult bindingResult)
 	{
 		if(bindingResult.hasErrors()) {
-			return bindingResult.getFieldError().getDefaultMessage();
+//			return bindingResult.getFieldError().getDefaultMessage();
+			String msg = bindingResult.getFieldError().getDefaultMessage();
+			Result res = ResultUtil.error(1, msg);
+			return res;
 		}
 		
 		People newPeople = new People();
 		newPeople.setName(people.getName());
 		newPeople.setAge(people.getAge());
 		newPeople.setMoney(people.getMoney());
-		return peopleRepository.save(newPeople);
+		return ResultUtil.success(peopleRepository.save(newPeople));
 	}
 	
 	//查询一个人
